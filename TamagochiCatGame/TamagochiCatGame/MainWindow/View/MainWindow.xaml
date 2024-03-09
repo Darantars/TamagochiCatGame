@@ -1,0 +1,76 @@
+﻿<Window x:Class="TamagochiCatGame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TamagochiCatGame"
+        mc:Ignorable="d"
+        Title="TamagochiCatApp" Background="#E4E3E3" MinHeight="678" MinWidth="1050" MaxHeight="678" MaxWidth="1050">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*" MinHeight="27" MaxHeight="27"></RowDefinition>
+            <RowDefinition Height="77*" MinHeight="440" MaxHeight="440" ></RowDefinition>
+            <RowDefinition Height="31*" MinHeight="198" MaxHeight="198"></RowDefinition> 
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <!--#region Верхняя панель-->
+        <!--  Индикатор возраста питомца  -->
+        <TextBlock Name="Pet_Age_Textbox"  Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Width="235" Background="#C4C4C4" Text="{Binding}"></TextBlock>
+        <!--#endregion-->
+        
+        <!--#region Область отображения питомца-->
+        <!--  Текущий фрейм питомца  -->
+        <Image Name="Pet_Frame_Image"  Source="{Binding}"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="262" Height="199" Margin="0,0,262,199" ></Image>
+        <!--  Имя питомца  -->
+        <Button Name="Pet_Name_Button" Content="{Binding}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="262" Height="27" Margin="0,0,0,-227" Background="#C4C4C4"></Button>
+        <!--#endregion-->
+
+        <!--#region Нижняя панель-->
+        <!--  Панель характеристик  -->
+        <StackPanel Background="#C4C4C4" Height="auto" Orientation="Vertical" Grid.Column="0" Grid.Row="2" Margin="0,0,5,0">
+            <Label Content="Характеристики питомца:" HorizontalAlignment="Center"></Label>
+            <StackPanel Background="#ADA9A9"  Orientation="Vertical"  Height="170">
+                <!--  Здоровье  -->
+                <StackPanel Margin="10,20,10,5" Name="Health_Panel" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <Label Width="85" Content="Здоровье:"></Label>
+                    <TextBlock Width="75" Name="Health_Status_TextBlock" MinWidth="20" Text="{Binding}"></TextBlock>
+                    <ProgressBar Name="Health_Bar" Opacity="0.8" Foreground="#F43131" Width="295" Height="15"></ProgressBar>
+                </StackPanel>
+                <!--  Голод  -->
+                <StackPanel Margin="10,5,10,5" Name="Hunger_Panel" Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                    <Label Width="85" Content="Голод:"></Label>
+                    <TextBlock Width="75" Name="Hunger_Status_TextBlock" MinWidth="20" Text="{Binding}"></TextBlock>
+                    <ProgressBar Name="Hunger_Bar" Opacity="0.8" Foreground="#F4ED31" Width="295" Height="15"/>
+                </StackPanel>
+                <!--  Запас сил  -->
+                <StackPanel Margin="10,5,10,20" Name="Stamina_Panel" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <Label Width="85" Content="Запас сил:"></Label>
+                    <TextBlock Width="75" Name="Stamina_Status_TextBlock" MinWidth="20" Text="{Binding}"></TextBlock>
+                    <ProgressBar Name="Stamina_Bar" Opacity="0.8" Foreground="#383636" Width="295" Height="15"></ProgressBar>                    
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <!--  Панель доступных действий  -->
+        <StackPanel Background="#C4C4C4" Height="auto" Orientation="Vertical" Grid.Column="1" Grid.Row="2" Margin="5,0,0,0" >
+            <Label  Content="Доступные действия:" HorizontalAlignment="Center"></Label>
+            <StackPanel Background="#ADA9A9"  Orientation="Vertical" Height="170">
+                <!--  Кнопка кормления питомца  -->
+                <Button Content="КОРМИТЬ ПИТОМЦА" Height="26" Width="272" Margin="10,15,10,5"></Button>
+                <!--  Кнопка игры с питомцем  -->
+                <Button Content="ИГРАТЬ С ПИТОМЦЕМ"  Height="26" Width="272" Margin="10,5,10,5"></Button>
+                <!--  Кнопка укачивания питомца  -->
+                <Button Content="УКАЧАТЬ  ПИТОМЦА"  Height="26" Width="272" Margin="10,5,10,5"></Button>
+                <!--  Кнопка лечения питомца  -->
+                <Button Content="ЛЕЧИТЬ  ПИТОМЦА"  Height="26" Width="272" Margin="10,5,10,20"></Button>
+            </StackPanel>
+        </StackPanel>
+        <!--#endregion-->
+
+    </Grid>
+
+    
+</Window>
