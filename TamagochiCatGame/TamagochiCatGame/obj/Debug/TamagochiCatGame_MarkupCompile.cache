@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\App.xaml
-11380196639
+21980797190
 
-61885148715
+8-1592006736
 13-38814620
-MainWindow\View\MainWindow.xaml;
+MainWindow\View\MainWindow.xaml;PetCreateWindow\View\PetCreateWindow.xaml;
 
-False
+True
 

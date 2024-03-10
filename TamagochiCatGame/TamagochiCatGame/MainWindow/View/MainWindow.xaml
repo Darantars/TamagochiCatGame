@@ -26,7 +26,7 @@
         <!--  Текущий фрейм питомца  -->
         <Image Name="Pet_Frame_Image"  Source="{Binding}"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="262" Height="199" Margin="0,0,262,199" ></Image>
         <!--  Имя питомца  -->
-        <Button Name="Pet_Name_Button" Content="{Binding}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="262" Height="27" Margin="0,0,0,-227" Background="#C4C4C4"></Button>
+        <Button Name="Pet_Name_Button" Content="{Binding}" Click="Pet_Name_Button_Click" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="262" Height="27" Margin="0,0,0,-227" Background="#C4C4C4"></Button>
         <!--#endregion-->
 
         <!--#region Нижняя панель-->
@@ -35,16 +35,22 @@
             <Label Content="Характеристики питомца:" HorizontalAlignment="Center"></Label>
             <StackPanel Background="#ADA9A9"  Orientation="Vertical"  Height="170">
                 <!--  Здоровье  -->
-                <StackPanel Margin="10,20,10,5" Name="Health_Panel" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <StackPanel Margin="10,15,10,0" Name="Health_Panel" Orientation="Horizontal" HorizontalAlignment="Stretch">
                     <Label Width="85" Content="Здоровье:"></Label>
                     <TextBlock Width="75" Name="Health_Status_TextBlock" MinWidth="20" Text="{Binding}"></TextBlock>
-                    <ProgressBar Name="Health_Bar" Opacity="0.8" Foreground="#F43131" Width="295" Height="15"></ProgressBar>
+                    <ProgressBar Name="Health_Bar" Opacity="0.8" Foreground="#63D22F" Width="295" Height="15"></ProgressBar>
                 </StackPanel>
                 <!--  Голод  -->
-                <StackPanel Margin="10,5,10,5" Name="Hunger_Panel" Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                <StackPanel Margin="10,5,10,0" Name="Hunger_Panel" Orientation="Horizontal" HorizontalAlignment="Stretch" >
                     <Label Width="85" Content="Голод:"></Label>
                     <TextBlock Width="75" Name="Hunger_Status_TextBlock" MinWidth="20" Text="{Binding}"></TextBlock>
                     <ProgressBar Name="Hunger_Bar" Opacity="0.8" Foreground="#F4ED31" Width="295" Height="15"/>
+                </StackPanel>
+                <!--  Настроение  -->
+                <StackPanel Margin="10,5,10,0" Name="Mood_Panel" Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                    <Label Width="85" Content="Настроение:"></Label>
+                    <TextBlock Width="75" Name="Mood_Status_TextBlock" MinWidth="20" Text="{Binding}"></TextBlock>
+                    <ProgressBar Name="Mood_Bar" Opacity="0.8" Foreground="#5BC3F0" Width="295" Height="15"/>
                 </StackPanel>
                 <!--  Запас сил  -->
                 <StackPanel Margin="10,5,10,20" Name="Stamina_Panel" Orientation="Horizontal" HorizontalAlignment="Stretch">
@@ -59,13 +65,13 @@
             <Label  Content="Доступные действия:" HorizontalAlignment="Center"></Label>
             <StackPanel Background="#ADA9A9"  Orientation="Vertical" Height="170">
                 <!--  Кнопка кормления питомца  -->
-                <Button Content="КОРМИТЬ ПИТОМЦА" Height="26" Width="272" Margin="10,15,10,5"></Button>
+                <Button Name="Feed_Pet_Button" Content="КОРМИТЬ ПИТОМЦА" Click="Feed_Pet_Button_Click" Height="22" Width="272" Margin="10,15,10,5"></Button>
                 <!--  Кнопка игры с питомцем  -->
-                <Button Content="ИГРАТЬ С ПИТОМЦЕМ"  Height="26" Width="272" Margin="10,5,10,5"></Button>
+                <Button Name="Play_Pet_Button" Content="ИГРАТЬ С ПИТОМЦЕМ" Click="Play_Pet_Button_Click"  Height="22" Width="272" Margin="10,5,10,5"></Button>
                 <!--  Кнопка укачивания питомца  -->
-                <Button Content="УКАЧАТЬ  ПИТОМЦА"  Height="26" Width="272" Margin="10,5,10,5"></Button>
+                <Button Name="Lul_Pet_Button"  Content="УКАЧАТЬ  ПИТОМЦА" Click="Lul_Pet_Button_Click"  Height="22" Width="272" Margin="10,5,10,5"></Button>
                 <!--  Кнопка лечения питомца  -->
-                <Button Content="ЛЕЧИТЬ  ПИТОМЦА"  Height="26" Width="272" Margin="10,5,10,20"></Button>
+                <Button Name="Treat_Pet_Button"  Content="ЛЕЧИТЬ  ПИТОМЦА" Click="Treat_Pet_Button_Click"  Height="22" Width="272" Margin="10,5,10,20"></Button>
             </StackPanel>
         </StackPanel>
         <!--#endregion-->

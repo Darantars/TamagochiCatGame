@@ -13,3 +13,5 @@ W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\TamagochiC
 W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\TamagochiCatGame.csproj.CoreCompileInputs.cache
 W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\TamagochiCatGame.exe
 W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\TamagochiCatGame.pdb
+W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\PetCreateWindow\View\PetCreateWindow.g.cs
+W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\PetCreateWindow\View\PetCreateWindow.baml
