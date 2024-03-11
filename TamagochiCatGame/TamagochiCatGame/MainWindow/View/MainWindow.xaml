@@ -10,21 +10,21 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="4*" MinHeight="27" MaxHeight="27"></RowDefinition>
             <RowDefinition Height="77*" MinHeight="440" MaxHeight="440" ></RowDefinition>
-            <RowDefinition Height="31*" MinHeight="198" MaxHeight="198"></RowDefinition> 
+            <RowDefinition Height="31*" MinHeight="198" MaxHeight="198"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50*"></ColumnDefinition>
             <ColumnDefinition Width="50*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
+
         <!--#region Верхняя панель-->
         <!--  Индикатор возраста питомца  -->
-        <TextBlock Name="Pet_Age_Textbox"  Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Width="235" Background="#C4C4C4" Text="{Binding}"></TextBlock>
+        <TextBlock Name="Pet_Age_Textbox" Padding="5" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Width="235" Background="#C4C4C4" Text="{Binding}"></TextBlock>
         <!--#endregion-->
-        
+
         <!--#region Область отображения питомца-->
         <!--  Текущий фрейм питомца  -->
-        <Image Name="Pet_Frame_Image"  Source="{Binding}"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="262" Height="199" Margin="0,0,262,199" ></Image>
+        <Image Name="Pet_Frame_Image"  Source="/Images/DefaultPet.jpg"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="262" Height="auto" Margin="386,169,0,0" ></Image>
         <!--  Имя питомца  -->
         <Button Name="Pet_Name_Button" Content="{Binding}" Click="Pet_Name_Button_Click" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="262" Height="27" Margin="0,0,0,-227" Background="#C4C4C4"></Button>
         <!--#endregion-->
@@ -36,27 +36,27 @@
             <StackPanel Background="#ADA9A9"  Orientation="Vertical"  Height="170">
                 <!--  Здоровье  -->
                 <StackPanel Margin="10,15,10,0" Name="Health_Panel" Orientation="Horizontal" HorizontalAlignment="Stretch">
-                    <Label Width="85" Content="Здоровье:"></Label>
-                    <TextBlock Width="75" Name="Health_Status_TextBlock" MinWidth="20" Text="{Binding}"></TextBlock>
-                    <ProgressBar Name="Health_Bar" Opacity="0.8" Foreground="#63D22F" Width="295" Height="15"></ProgressBar>
-                </StackPanel>
-                <!--  Голод  -->
-                <StackPanel Margin="10,5,10,0" Name="Hunger_Panel" Orientation="Horizontal" HorizontalAlignment="Stretch" >
-                    <Label Width="85" Content="Голод:"></Label>
-                    <TextBlock Width="75" Name="Hunger_Status_TextBlock" MinWidth="20" Text="{Binding}"></TextBlock>
-                    <ProgressBar Name="Hunger_Bar" Opacity="0.8" Foreground="#F4ED31" Width="295" Height="15"/>
+                    <Label Width="125" Content="Здоровье:"></Label>
+                    <TextBlock Padding="5" Width="75" Name="Health_Status_TextBlock" MinWidth="20" Text="{Binding}"></TextBlock>
+                    <ProgressBar Name="Health_Bar" Opacity="0.8" Foreground="#63D22F" Width="285" Height="15" Maximum="10"></ProgressBar>
                 </StackPanel>
                 <!--  Настроение  -->
                 <StackPanel Margin="10,5,10,0" Name="Mood_Panel" Orientation="Horizontal" HorizontalAlignment="Stretch" >
-                    <Label Width="85" Content="Настроение:"></Label>
-                    <TextBlock Width="75" Name="Mood_Status_TextBlock" MinWidth="20" Text="{Binding}"></TextBlock>
-                    <ProgressBar Name="Mood_Bar" Opacity="0.8" Foreground="#5BC3F0" Width="295" Height="15"/>
+                    <Label Width="125" Content="Настроение:"></Label>
+                    <TextBlock Padding="5" Width="75" Name="Mood_Status_TextBlock" MinWidth="20" Text="{Binding}"></TextBlock>
+                    <ProgressBar Name="Mood_Bar" Opacity="0.8" Foreground="#5BC3F0" Width="285" Height="15" Maximum="10"/>
                 </StackPanel>
                 <!--  Запас сил  -->
-                <StackPanel Margin="10,5,10,20" Name="Stamina_Panel" Orientation="Horizontal" HorizontalAlignment="Stretch">
-                    <Label Width="85" Content="Запас сил:"></Label>
-                    <TextBlock Width="75" Name="Stamina_Status_TextBlock" MinWidth="20" Text="{Binding}"></TextBlock>
-                    <ProgressBar Name="Stamina_Bar" Opacity="0.8" Foreground="#383636" Width="295" Height="15"></ProgressBar>                    
+                <StackPanel Margin="10,5,10,0" Name="FatigueLevel_Panel" Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                    <Label Width="125" Content="Уровень усталости:"></Label>
+                    <TextBlock Padding="5" Width="75" Name="FatigueLevel_Status_TextBlock" MinWidth="20" Text="{Binding}"></TextBlock>
+                    <ProgressBar Name="FatigueLevel_Bar" Opacity="0.8" Foreground="#3F0825" Width="285" Height="15" Maximum="10"></ProgressBar>
+                </StackPanel>
+                <!--  Голод  -->
+                <StackPanel Margin="10,5,10,20" Name="HungerLevel_Panel" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <Label Width="125" Content="Уровень голода:"></Label>
+                    <TextBlock Padding="5" Width="75" Name="HungerLevel_Status_TextBlock" MinWidth="20" Text="{Binding}"></TextBlock>
+                    <ProgressBar Name="HungerLevel_Bar" Opacity="0.8" Foreground="#D51B21" Width="285" Height="15" Maximum="10"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
@@ -78,5 +78,5 @@
 
     </Grid>
 
-    
+
 </Window>

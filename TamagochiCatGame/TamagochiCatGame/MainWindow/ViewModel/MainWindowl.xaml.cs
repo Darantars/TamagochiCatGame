@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading;
 using System.Timers;
@@ -31,20 +32,22 @@ namespace TamagochiCatGame
         /// <summary>
         /// Обьект текущего питомца пользователя.
         /// </summary>
-        Pet CurrentPet = new  Pet();
+        Pet CurrentPet = new Pet();
 
         /// <summary>
         /// Таймер события уменьшения голода и настроения со временем
         /// </summary>
         public static System.Timers.Timer DecimalTimer;
-
+        
         public MainWindow()
         {
             InitializeComponent();
             PetInishalyze();
-            PetDecimalingTimer();
             PetViewModalSynq();
+
         }
+
+
 
 
 
@@ -54,24 +57,15 @@ namespace TamagochiCatGame
         /// </summary>
         public void PetInishalyze()
         {
-            //Вариант запуска не из сохранения
-            CurrentPet.Name = string.Empty;
-            CurrentPet.Age = "0 лет, 0 дней, 0 часов";
-            CurrentPet.Stamina = 0;
-            CurrentPet.Health = 0;
-            CurrentPet.Hunger = 0;
-            CurrentPet.Mood = 0;
-            
-
             //Синхронизация с View
             Health_Bar.Value = CurrentPet.Health;
             Health_Status_TextBlock.Text = CurrentPet.Health.ToString();
-            Hunger_Bar.Value = CurrentPet.Hunger;
-            Hunger_Status_TextBlock.Text = CurrentPet.Hunger.ToString();
+            HungerLevel_Bar.Value = CurrentPet.HungerLevel;
+            HungerLevel_Status_TextBlock.Text = CurrentPet.HungerLevel.ToString();
             Mood_Bar.Value = CurrentPet.Mood;
             Mood_Status_TextBlock.Text = CurrentPet.Mood.ToString();
-            Stamina_Bar.Value = CurrentPet.Stamina;
-            Stamina_Status_TextBlock.Text =CurrentPet.Stamina.ToString();
+            FatigueLevel_Bar.Value = CurrentPet.FatigueLevel;
+            FatigueLevel_Status_TextBlock.Text =CurrentPet.FatigueLevel.ToString();
 
         }
 
@@ -80,7 +74,7 @@ namespace TamagochiCatGame
         /// </summary>
         public void PetDecimalingTimer()
         {
-            DecimalTimer = new System.Timers.Timer(2000);
+            DecimalTimer = new System.Timers.Timer(8000);
             DecimalTimer.Elapsed += TimedDecimalEvent;
             DecimalTimer.AutoReset = true;
             DecimalTimer.Enabled = true;
@@ -92,7 +86,11 @@ namespace TamagochiCatGame
         public void TimedDecimalEvent(Object source, ElapsedEventArgs e)
         {
             CurrentPet.DecimalEvent();
-            
+            Application.Current.Dispatcher.Invoke((Action)(() =>
+            {
+                PetViewModalSynq();
+            }));
+
         }
 
         /// <summary>
@@ -102,19 +100,22 @@ namespace TamagochiCatGame
         {
             Health_Bar.Value = CurrentPet.Health;
             Health_Status_TextBlock.Text = CurrentPet.Health.ToString();
-            Hunger_Bar.Value = CurrentPet.Hunger;
-            Hunger_Status_TextBlock.Text = CurrentPet.Hunger.ToString();
+            HungerLevel_Bar.Value = CurrentPet.HungerLevel;
+            HungerLevel_Status_TextBlock.Text = CurrentPet.HungerLevel.ToString();
             Mood_Bar.Value = CurrentPet.Mood;
             Mood_Status_TextBlock.Text = CurrentPet.Mood.ToString();
-            Stamina_Bar.Value = CurrentPet.Stamina;
-            Stamina_Status_TextBlock.Text = CurrentPet.Stamina.ToString();
+            FatigueLevel_Bar.Value = CurrentPet.FatigueLevel;
+            FatigueLevel_Status_TextBlock.Text = CurrentPet.FatigueLevel.ToString();
+
             if (CurrentPet.Name == null || CurrentPet.Name == string.Empty)
             {
                 Pet_Name_Button.Content = "Создать питомца";
+                Pet_Age_Textbox.Text = "У вас пока не было питомца.";
             }
             else
             {
                 Pet_Name_Button.Content = CurrentPet.Name;
+                Pet_Age_Textbox.Text = "Ваш питомец прожил:    " + CurrentPet.Age.ToString() + "  ч.";
             }
         }
 
@@ -128,12 +129,12 @@ namespace TamagochiCatGame
                 if (PetCreateWindow.ShowDialog() == true)
                 {
                     CurrentPet.Create(PetCreateWindow.name);
+                    PetDecimalingTimer();
                 }
-                else
-                {
-                    System.Windows.MessageBox.Show("Похоже у вас уже есть питомец.");
-                }
-
+            }
+            else
+            {
+                MessageBox.Show("Похоже у вас уже есть питомец.");
             }
             PetViewModalSynq();
         }

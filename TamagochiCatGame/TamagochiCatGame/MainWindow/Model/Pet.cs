@@ -19,7 +19,7 @@ namespace TamagochiCatGame
         /// <summary>
         /// Возраст питомца.
         /// </summary>
-        public string Age { get; set; }
+        public int Age { get; set; }
 
         /// <summary>
         /// Отображает текущее здоровье питомца.
@@ -27,14 +27,14 @@ namespace TamagochiCatGame
         public uint Health { get; set; }
 
         /// <summary>
-        /// Отображает текущее здоровье питомца.
+        /// Отображает текущий уровень голода питомца.
         /// </summary>
-        public uint Hunger { get; set; }
+        public uint HungerLevel { get; set; }
 
         /// <summary>
         /// Отображает текущее здоровье питомца.
         /// </summary>
-        public uint Stamina { get; set; }
+        public uint FatigueLevel { get; set; }
 
         /// <summary>
         /// Отображает текущее настроение питомца.
@@ -59,43 +59,52 @@ namespace TamagochiCatGame
             {
                 if (Health == 0)
                 {
-                    DiyEvent();
+                    GameOverEvent();
                 }
                 else
                 {
-                    if (Hunger >= 10)
+                    Age += 1;
+
+                    if (HungerLevel < 10)
                     {
-                        Hunger = Hunger - 10;
+                        HungerLevel = HungerLevel + 1;
                     }
                     else
                     {
-                        if (Hunger == 0)
+                        if (HungerLevel == 10)
                         {
-                            Health = Health - 10;
-                            System.Windows.MessageBox.Show("Ваш питомец голодает.");
+                            Health = Health - 1;
+                            System.Windows.MessageBox.Show("Ваш питомец голодает. Его здоровье под угрозой.");
                         }
                     }
 
-                    if (Mood >= 10)
+                    if (Mood >= 1)
                     {
-                        Mood = Mood - 10;
+                        Mood = Mood - 1;
                     }
                     else
                     {
-                        if (Mood == 0)
+                        if(FatigueLevel < 10)
                         {
-                            Stamina = Stamina / 2;
-                            System.Windows.MessageBox.Show("Ваш питомец в депрессии.");
+                            FatigueLevel = FatigueLevel + 1;
                         }
-                        else
-                        {
-                            Mood = 0;
-                        }
+                        System.Windows.MessageBox.Show("Ваш питомец в депрессии. Его силы покидают его.");
                     }
 
+                    if (FatigueLevel < 10)
+                    {
+                        FatigueLevel = FatigueLevel + 1;
+                    }
+                    else
+                    {
+                        if (Health >= 1)
+                        {
+                            Health = Health - 1;
+                            System.Windows.MessageBox.Show("Ваш питомец измотан. Его здоровье под угрозой.");
+                        }
+                    }
                     return;
                 }
-                
             }
             else { return; }
 
@@ -108,10 +117,11 @@ namespace TamagochiCatGame
         {
             Name = name;
             Alive = true;
-            Health = 100;
-            Hunger = 80;
-            Mood = 80;
-            Stamina = 80;
+            Health = 10;
+            HungerLevel = 0;
+            Mood = 8;
+            FatigueLevel = 0;
+            Age = 0;
         }
 
         /// <summary>
@@ -119,20 +129,35 @@ namespace TamagochiCatGame
         /// </summary>
         public void Feed()
         {
-            if (Hunger < 100 && Health > 0) 
+            if (HungerLevel > 0 && Alive)
             {
-                Hunger = Hunger + 10;
-                Mood = Mood + 5;
+                HungerLevel = HungerLevel - 1;
+                if (Mood < 10)
+                {
+                    Mood = Mood + 1;
+                }
+                else
+                {
+                    Mood = 10;
+                }
             }
             else
             {   
-                if (Health == 0) 
+                if (!Alive) 
                 {
                     System.Windows.MessageBox.Show("У вас нет питомца.");
                 }
                 else
                 {
-                    System.Windows.MessageBox.Show("Ваш питомец не голоден.");
+                    if(HungerLevel == 0)
+                    {
+                        System.Windows.MessageBox.Show("Вы перекормили питомца. Переедание вредит его здоровью.");
+                        if (Health >= 1)
+                        {
+                            Health = Health - 1;
+                        }
+                    }
+                        
                 }
             }
         }
@@ -142,24 +167,24 @@ namespace TamagochiCatGame
         /// </summary>
         public void Play()
         {
-            if (Mood < 100 && Stamina >= 10 && Health > 0)
+            if (Mood < 10 && FatigueLevel < 10 && Alive)
             {
-                Mood = Mood + 10;
-                Stamina = Stamina - 10;
+                Mood = Mood + 1;
+                FatigueLevel = FatigueLevel + 1;
             }
             else
             {
-                if (Health == 0)
+                if (!Alive)
                 {
                     System.Windows.MessageBox.Show("У вас нет питомца.");
                 }
                 else
                 {
-                    if (Mood == 100)
+                    if (Mood == 10)
                     {
-                        System.Windows.MessageBox.Show("Ваш питомец не хочет играть.");
+                        System.Windows.MessageBox.Show("Ваш питомец счастлив!");
                     }
-                    if (Stamina <= 10)
+                    if (FatigueLevel == 10)
                     {
                         System.Windows.MessageBox.Show("У вашего питомца нет сил играть.");
                     }
@@ -172,26 +197,26 @@ namespace TamagochiCatGame
         /// </summary>
         public void Lul()
         {
-            if (Stamina < 100 && Hunger >= 10 && Health > 0)
+            if (FatigueLevel > 0 && HungerLevel < 10 && Alive)
             {
-                Stamina = 100;
-                Hunger = Hunger - 10;
+                FatigueLevel = 0;
+                HungerLevel = HungerLevel + 1;
             }
             else
             {
-                if (Health == 0)
+                if (!Alive)
                 {
                     System.Windows.MessageBox.Show("У вас нет питомца.");
                 }
                 else
                 {
-                    if (Hunger <= 10)
+                    if (HungerLevel == 10)
                     {
                         System.Windows.MessageBox.Show("Ваш питомец не может уснуть от голода.");
                     }
-                    if (Stamina == 100)
+                    if (FatigueLevel == 0)
                     {
-                        System.Windows.MessageBox.Show("Ваш питомец абсолютно бодр.");
+                        System.Windows.MessageBox.Show("Ваш питомец абсолютно бодр и не хочет спать.");
                     }
                 }
             }
@@ -202,26 +227,26 @@ namespace TamagochiCatGame
         /// </summary>
         public void Treat()
         {
-            if (Health < 100 && Stamina >= 10 && Health > 0)
+            if (Health < 10 && FatigueLevel < 10 && Alive)
             {
-                Health = Health + 10;
-                Stamina = Stamina - 10;
+                Health = Health + 1;
+                FatigueLevel = FatigueLevel + 1;
             }
             else
             {
-                if (Health == 0)
+                if (!Alive)
                 {
                     System.Windows.MessageBox.Show("У вас нет питомца.");
                 }
                 else
                 {
-                    if (Stamina <= 10)
+                    if (FatigueLevel == 10)
                     {
                         System.Windows.MessageBox.Show("Ваш слишком слаб, чтобы принять лечение.");
                     }
-                    if (Health == 100)
+                    if (Health == 10)
                     {
-                        System.Windows.MessageBox.Show("Ваш питомец абсолютно здоров.");
+                        System.Windows.MessageBox.Show("Ваш питомец абсолютно здоров, его не нужно лечить.");
                     }
                 }
             }
@@ -231,13 +256,13 @@ namespace TamagochiCatGame
         /// <summary>
         /// Метод вызова события смерти питомца по достижению ее условий.
         /// </summary>
-        public void DiyEvent()
+        public void GameOverEvent()
         {
             Alive = false;
-            Stamina = 0;
-            Hunger = 0;
+            FatigueLevel = 0;
+            HungerLevel = 0;
             Mood = 0;
-            System.Windows.MessageBox.Show("Ваш питомец мертв. Вы никудышный хозяин.");
+            System.Windows.MessageBox.Show("Вы не справились с ролью хозяина. Ваш питомец заболел. Теперь о нем позаботятся ветеринары, а не вы.");
         }
         #endregion
     }

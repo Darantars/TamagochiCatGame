@@ -3,15 +3,15 @@ W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\bin\Debug\TamagochiC
 W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\bin\Debug\TamagochiCatGame.pdb
 W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\TamagochiCatGame.csproj.AssemblyReference.cache
 W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\MainWindow\View\MainWindow.g.cs
+W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\PetCreateWindow\View\PetCreateWindow.g.cs
 W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\App.g.cs
 W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\TamagochiCatGame_MarkupCompile.cache
 W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\TamagochiCatGame_MarkupCompile.lref
 W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\MainWindow\View\MainWindow.baml
+W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\PetCreateWindow\View\PetCreateWindow.baml
 W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\TamagochiCatGame.g.resources
 W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\TamagochiCatGame.Properties.Resources.resources
 W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\TamagochiCatGame.csproj.GenerateResource.cache
 W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\TamagochiCatGame.csproj.CoreCompileInputs.cache
 W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\TamagochiCatGame.exe
 W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\TamagochiCatGame.pdb
-W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\PetCreateWindow\View\PetCreateWindow.g.cs
-W:\RepositVS\TamagochiCat\TamagochiCatGame\TamagochiCatGame\obj\Debug\PetCreateWindow\View\PetCreateWindow.baml
